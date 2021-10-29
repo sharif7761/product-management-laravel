@@ -63,7 +63,8 @@ class ProductController extends Controller
     public function edit(Product $product)
     {
         $variants = Variant::all();
-        return view('products.edit', compact('variants'));
+        $product_details = Product::faidOrFailed($product);
+        return view('products.edit', compact('variants', 'product_details'));
     }
 
     /**
